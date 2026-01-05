@@ -1,0 +1,49 @@
+{
+  "name": "goods-manager",
+  "version": "0.1.0",
+  "description": "简易货物管理（Web + Electron 共用一套 React 代码）",
+  "main": "src/electron/main.js",
+  "scripts": {
+    "dev:server": "cross-env NODE_ENV=development node src/server/index.js",
+    "dev:web": "cross-env NODE_ENV=development TARGET=web webpack serve --config webpack.web.js --open",
+    "start:web": "cross-env NODE_ENV=production node src/server/index.js",
+    "start:electron": "cross-env TARGET=electron electron .",
+    "dev:electron": "set NODE_ENV=development&& set TARGET=electron&& npm run build:web && webpack --config webpack.electron.js --mode development && electron .",
+    "build:web": "cross-env NODE_ENV=production TARGET=web webpack --config webpack.web.js --mode production",
+    "build:electron": "npm run build:web && cross-env NODE_ENV=production TARGET=electron webpack --config webpack.electron.js --mode production && electron-builder",
+    "lint": "echo 'no lint configured'"
+  },
+  "build": {
+    "appId": "com.example.goodsmanager",
+    "files": [
+      "dist/web/**/*",
+      "src/electron/**",
+      "package.json",
+      "node_modules/**"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "@babel/preset-react": "^7.22.0",
+    "babel-loader": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.8.1",
+    "electron": "^26.0.0",
+    "electron-builder": "^24.7.0",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
