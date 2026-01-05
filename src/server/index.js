@@ -7,9 +7,9 @@ app.use(bodyParser.json());
 
 // In-memory store
 let goods = [
-  { id: '1', name: '笔记本', price: 5999 },
-  { id: '2', name: '鼠标', price: 99 },
-  { id: '3', name: '键盘', price: 199 }
+  { id: '1', name: 'xxxx01', price: 5999 },
+  { id: '2', name: 'xxxx02', price: 99 },
+  { id: '3', name: 'xxxx03', price: 199 }
 ];
 
 // GET /api/goods  支持 query: id, name, minPrice, maxPrice
